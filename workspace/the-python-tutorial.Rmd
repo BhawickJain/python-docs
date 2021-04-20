@@ -65,5 +65,33 @@ Invoke a script and then interact with it.
 # or 
 
 # #!/usr/bin/env python3
+# -*- coding: encoding -*-
+```
+
+### An Informal Introduction to Python
+
+`[?]` What data type does the `/` division return?  
+`[>]` floating point number
+
+```{python}
+type(8/5)
+```
+
+```{python}
+type(8/4)
+```
+
+`[?]` Does floor division `//` yield a `float` data type?  
+`[>]` No, always an `int`.
+
+```{python}
+type(8//5)
+```
+
+```{python}
+j
+```
+
+```{python}
 
 ```
