@@ -17,6 +17,53 @@ jupyter:
 
 A tour of the noteworthy features of the Python Language and introduces the [Python Standard Library](https://docs.python.org/3/library/index.html#library-index). Python Docs also offer a glossary of terms [[py-docs-glossary](https://docs.python.org/3/glossary.html#glossary)]
 
+
+### Whetting your Appetite
+
+`[?]` What problems does Python solve?  
+`[>]` Slow development cycles like that of C/C++/Java, requiring write/compile/test/re-compiles. This is particularly true if you want to quickly write a test suite for a C/C++ library, writing it in Python is must faster.
+
+`[?]` Why might you use python over Bash scripts?
+`[>]` Python is portable across many platforms and is a fully features programming language unlike Bash.
+
+`[?]` What are high-level data typses?  
+
+`[?]` Why might an interpreted language be an advantage?  
+`[>]` No compiling and linking is necessary. The code can be written interactive thanks to this. This is helpful to bottom-up development of a program.
+
+
+
+
+### Invoking the Interpretor
+
+`[?]` Where is the python interpreter usually stored?
+`[>]` `/usr/local/bin/python3.9`. Usually placed in the `PATH` variable to make it aviaalbel in the shell directly.
+
+
+
 ```{python}
+# ! python3 --version
+```
+
+Invoke a command or module directly through an interpreter.  
+`python -c command [arg]`  
+`python -m module [arg]`  
+
+Invoke a script and then interact with it.  
+`python script.py -1`
+
+
+`[?]` What encoding do python script usually treated as?  
+`[>]` UTF-8
+
+
+`[?]` How do you declare an encoding that is different to UTF-8 in a script? 
+
+```{python}
+# -*- coding: encoding -*-
+
+# or 
+
+# #!/usr/bin/env python3
 
 ```
