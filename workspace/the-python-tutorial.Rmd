@@ -70,6 +70,9 @@ Invoke a script and then interact with it.
 
 ### An Informal Introduction to Python
 
+
+__Numbers__
+
 `[?]` What data type does the `/` division return?  
 `[>]` floating point number
 
@@ -93,7 +96,10 @@ type(8%5)
 ```
 
 `[?]` What notation is used for floor and remainder divisons?  
-`[?]` What happens when you declare a variable that matches a function?
+
+
+`[?]` What happens when you declare a variable that matches a function?  
+`[>]` You mask the function with the local variable making it inaccessible.
 
 ```{python}
 round(5.86,0)
@@ -106,6 +112,11 @@ round = 5.596
 ```{python}
 # round(5.86,0) # TypeError: 'float' object is not callable
 ```
+
+`[ ]` Create an example that uses `Decimal`, `Fraction` and `ComplexNumbers` objects.
+
+
+__Strings__
 
 ```{python}
 
