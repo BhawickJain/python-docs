@@ -89,7 +89,22 @@ type(8//5)
 ```
 
 ```{python}
-j
+type(8%5)
+```
+
+`[?]` What notation is used for floor and remainder divisons?  
+`[?]` What happens when you declare a variable that matches a function?
+
+```{python}
+round(5.86,0)
+```
+
+```{python}
+round = 5.596
+```
+
+```{python}
+# round(5.86,0) # TypeError: 'float' object is not callable
 ```
 
 ```{python}
