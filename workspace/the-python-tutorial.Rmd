@@ -320,3 +320,14 @@ You need to create a new string
 ```{python}
 len(word)
 ```
+
+See also:
+[Text Sequence Type -- Str](https://docs.python.org/3/library/stdtypes.html#textseq)
+[String Methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
+[Formatted string literals](https://docs.python.org/3/reference/lexical_analysis.html#f-strings)
+[Format String Syntax]()
+[printf-style String Formatting]
+
+```{python}
+
+```
