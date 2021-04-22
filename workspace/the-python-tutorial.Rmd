@@ -118,6 +118,129 @@ round = 5.596
 
 __Strings__
 
+`"..."` `'...'` to write strings with `\` to escape characters.
+
+```{python}
+text = 'is\'t it great!'
+text
+```
+
+or just do this
+
+```{python}
+text = "is't is great"
+text
+```
+
+```{python}
+print('first line.\nsecond line')
+```
+
+`[?]` When placing `\n` in a string, do you need a space after it?  
+
+
+`[?]` When `\n` is placed inside a string variable, what happens?
+
+```{python}
+a = "first line.\nsecond line"
+a
+```
+
+```{python}
+print(a)
+```
+
+You need the `print()` function to make use of the `\n` or equivalent.
+
+
+`[?]` How can you escape characters in a string without `\`?
+`[>]` Write the `r` character right before the quote to treat it as a raw text.
+
+```{python}
+print('C:\some\name')
+```
+
+```{python}
+print(r'C:\some\name')
+```
+
+`[?]` How do you prevent a new line from printing when using triple-quote literals `"""..."""` and `'''...'''`?
+
+```{python}
+print("""
+Usage: thing [OPTIONS]
+    -h                           Display this usage message
+    -H hostname                  Hostname to connect to
+""")
+```
+
+Use `\` at the end of the line to remove the spare newline right at the start.
+
+```{python}
+print("""\
+Usage: thing [OPTIONS]
+    -h                           Display this usage message
+    -H hostname                  Hostname to connect to
+""")
+```
+
+```{python}
+a = """\
+Usage: thing [OPTIONS]
+    -h                           Display this usage message
+    -H hostname                  Hostname to connect to
+"""
+a
+```
+
+```{python}
+print(a)
+```
+
+`[?]` What happens when you do the following?
+
+```{python}
+'py' 'thon'
+```
+
+`[?]`What happens when you do the following?
+
+```{python}
+3 * 'w' + '.google.com'
+```
+
+`[?]` What happens when you do the following?
+
+```{python}
+a = ('These are several string within parentheses '
+     'what do you think happens?')
+a
+```
+
+`[?]` When might it be useful?  
+`[>]` Allows for a body of text to be placed without need to wrap text.
+
+
+`[?]` When doesn't it work?
+
+```{python}
+b = 'what do you think happens?'
+a = ('These are several string within parentheses '
+     b)
+```
+
+```{python}
+prefix = 'Py'
+# prefix 'thon'
+```
+
+```{python}
+prefix = 'Py'
+prefix + 'thon'
+```
+
+__Slicing Strings__
+
 ```{python}
 
 ```
