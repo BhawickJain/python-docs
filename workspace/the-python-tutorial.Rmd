@@ -341,10 +341,86 @@ __Lists__
 `[>]` A shallow copy is created of the list?
 
 
-`[?]` What is a [shallow copy](https://docs.python.org/3/library/copy.html#shallow-vs-deep-copy)?
+`[?]` What is a [shallow copy](https://docs.python.org/3/library/copy.html#shallow-vs-deep-copy)? <br>
+`[>]` A shallow copy creates a new object and then creates references to the objects held within the original object to best possible extent. This is instead of deep copy which creates an object but then recursively copies all the objects within into this new object.
+
+`[?]` When should the problem of deep copy and shallow copy be considered?  
+`[>]` When you have an object that contains other objects like a `list` type.
+
+
+`[?]` What problems can occur in deep copy?  
+`[?]` Does Python offer a Copy-On-Write feature like Swift?  
+`[?]` How might you use the `deepcopy()` function to mitigate this?
+
+
+`[?]` How are lists different from strings when considering them to be a list of characters?
+`[>]` String of Characters are immutible whilst lists are not. Python lists allows mixed data types whilst a string of characters is just that.
 
 ```{python}
-globals()
+squares = [1, 4, 9, 16, 25]
+squares[0] # first items with index notation
+squares[-1] # 25 
+squares[-3:] # [9, 16, 25]
+```
+
+`[?]` What does slicing a list do?  
+`[>]` It returns a new list.
+
+```{python}
+squares + [36, 49, 64, 81, 100] # Lists can be concatenated
+```
+
+```{python}
+squares[-3] = 72  # Lists are mutable
+squares
+```
+
+`[?]` What other data are `mutable` (like lists) and `immutable` (like strings)? 
+
+
+`[?]` How do you replace a list of values in a list?
+
+```{python}
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+letters[2:5] = ['C', 'D', 'E']
+letters
+```
+
+`[?]` What is a nifty way to remove a list of items in a list?
+
+```{python}
+letters[2:5] = [] # resize list
+letters
+```
+
+```{python}
+letters[:] = [] # remove all items
+letters
+```
+
+`[?]` Can you use the `len` function on `list` types?  
+`[?]` Is it possible to implement your own `len` method for your own data structure?
+
+
+`[?]` How do you select a list of lists?
+
+```{python}
+a = ['a', 'b', 'c']
+n = ['1', '2', '3']
+c = [a, n]
+c
+```
+
+```{python}
+c[0][-3]
+```
+
+`[?]` What is evaluated first?  
+`[>]` The LHS terms are evaluated first then the RHS.
+
+```{python}
+a, b = 0, 1
+a, b = b, a + b
 ```
 
 ```{python}
