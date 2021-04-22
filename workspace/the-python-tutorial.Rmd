@@ -321,13 +321,24 @@ You need to create a new string
 len(word)
 ```
 
-See also:
-[Text Sequence Type -- Str](https://docs.python.org/3/library/stdtypes.html#textseq)
-[String Methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
-[Formatted string literals](https://docs.python.org/3/reference/lexical_analysis.html#f-strings)
-[Format String Syntax]()
-[printf-style String Formatting]
+See also:  
+[Text Sequence Type -- Str](https://docs.python.org/3/library/stdtypes.html#textseq)  
+[String Methods](https://docs.python.org/3/library/stdtypes.html#string-methods)  
+[Formatted string literals](https://docs.python.org/3/reference/lexical_analysis.html#f-strings)  
+[Format String Syntax](https://docs.python.org/3/library/string.html#formatstrings)  
+[printf-style String Formatting](https://docs.python.org/3/library/stdtypes.html#old-string-formatting) -- Describes the `%` operator in more detail  
 
-```{python}
 
-```
+__Lists__
+
+
+
+`[?]` What happens when you slice a list, what does it return?  
+`[>]` Returns a new list
+
+
+`[?]` What when you assign a variable with `alist[:]`?  
+`[>]` A shallow copy is created of the list?
+
+
+`[?]` What is a [shallow copy](https://docs.python.org/3/library/copy.html#shallow-vs-deep-copy)?
