@@ -342,3 +342,11 @@ __Lists__
 
 
 `[?]` What is a [shallow copy](https://docs.python.org/3/library/copy.html#shallow-vs-deep-copy)?
+
+```{python}
+globals()
+```
+
+```{python}
+
+```
