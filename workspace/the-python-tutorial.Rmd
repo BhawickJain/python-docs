@@ -436,3 +436,5 @@ while a < 1000:
     print(a, end=',')
     a, b = b, a+b
 ```
+
+`[?]` What does the decorator property `@` in a class do?
