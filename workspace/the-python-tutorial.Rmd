@@ -415,14 +415,24 @@ c
 c[0][-3]
 ```
 
-`[?]` What is evaluated first?  
-`[>]` The LHS terms are evaluated first then the RHS.
+`[?]` What is evaluated first in the two lines?  
+`[>]` For Line 1, both variablesa are assigned simultaneously. For Line 2, the LHS terms are evaluated first then the RHS.
+
+```{python}
+a, b = 2, 1
+a, b = b, a + b
+a, b
+```
+
+`[?]` When evaluating an integer as a boolean what does Python and C have in common?  
+`[>]` Zero values are considered `False` and non-zero values are considered `True`
+
+`[?]` How is an iterable object evaluated as a boolean?  
+`[>]` Its `len()` result is considered and treated: if zero condition is `False`, if non-zero condition is `True`.
 
 ```{python}
 a, b = 0, 1
-a, b = b, a + b
-```
-
-```{python}
-
+while a < 1000:
+    print(a, end=',')
+    a, b = b, a+b
 ```
