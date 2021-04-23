@@ -548,6 +548,20 @@ for num in range(2, 10):
 
 ```
 
+`[?]` How can you simplify the following statement?
+
+```{python}
+alpha = "y"
+print(f"This is an alphabet: {alpha}")
+```
+
+```{python}
+print("This is an alphabet:", alpha)
+```
+
+The concatenation in the `print` statement automatically adds a space in between.
+
+
 `[?]` What is a good use case for the `continue` statement?
 
 `[?]` Can you create good examples where the `break`, `continue` and `else` statements are useful?
