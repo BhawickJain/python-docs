@@ -14,6 +14,7 @@ jupyter:
 ---
 
 ## The Python Tutorial
+[[doc](https://docs.python.org/3/tutorial/index.html)]
 
 A tour of the noteworthy features of the Python Language and introduces the [Python Standard Library](https://docs.python.org/3/library/index.html#library-index). Python Docs also offer a glossary of terms [[py-docs-glossary](https://docs.python.org/3/glossary.html#glossary)]
 
@@ -438,3 +439,31 @@ while a < 1000:
 ```
 
 `[?]` What does the decorator property `@` in a class do?
+
+
+### Control Flow Statements
+
+
+__IF Statements__
+
+`[?]` What three statement can be used for an if statement in Python?  
+`[>]` `if`, `elif`, `else`
+
+`[?]` When would you use `elif` versus `else`?  <br>
+`[>]` `elif` is great when you want to test for another condition. `else` is good _anything else_.
+
+`[?]` What is the `elif` statement a substitute for?  
+`[>]` It is a substitute for the `case` operator that is typically offered in a language like `C`. It prevents successive intentation or nesting of if statements.
+
+
+__For Statements__
+
+`[?]` How is Python's `for` statement different from `Pascals` or `C`?  <
+`[>]` Pascals can only iterate over progressive number sequences, whilst in C you need to define the iteration and stopping condition. In Python it iterates until you reach the end of a collection, sort of generalising both problems.
+
+`[?]` What is python documentation's recommendation on iterating and modifying a collection simultaneously?  
+`[>]` It is tricky to get right and is it best if you create a new or work on a copy of the collection instead.
+
+```{python}
+
+```
