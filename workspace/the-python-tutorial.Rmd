@@ -536,6 +536,8 @@ __Break and Continue, and Else Clauses on Loops__
 `[?]` What is a `continue` statement?  
 `[?]` What is a good use case for the `continue` statement?
 
+`[?]` Can you create good examples where the `break`, `continue` and `else` statements are useful?
+
 
 __Pass Statements__
 
@@ -569,3 +571,5 @@ placeholder for methods whilst they are under-development
 def initlog(*args):
     pass # Remember to implement this!
 ```
+
+`[?]` Where can you use the pass statement in your work?
