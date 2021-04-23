@@ -477,3 +477,51 @@ Predict the following results:
 ```{python}
 range(5)
 ```
+
+```{python}
+range(5, 10)
+```
+
+```{python}
+range(0, 10, 3)
+```
+
+```{python}
+range(-10, -100, -30)
+```
+
+`[?]` Why does range not give a list but you can iterate over it as if it is one?  
+`[?]` It appears be an iterable object where the `range()` yields when iterated over until exhausted, this prevents a large range from having to be in memory.  
+
+```{python}
+sum(range(4)) # 0 + 1 + 2 + 3
+```
+
+```{python}
+help(list)
+```
+
+`[?]` How do you convert a `range(a)` into a `list`?  
+`[?]` 
+
+```{python}
+list(range(4))
+```
+
+`[?]` Why do the terms in `range(b, a, c)` represent?  
+`[>]` `a` is the end number and is never included by the range, `b` is the start point and is always yielded. `c` is the size of the step to add to the inital value. For `range(a)` is treated as `range(0, a, 1)` and `range(b, a)` is treated as `range(b, a, 1)`
+
+```{python}
+a = ['Mary', 'had', 'a', 'little', 'lamb']
+for i in range(len(a)):
+    print(i, a[i])
+```
+
+`[?]` How might you use the `range` function enumerate a collection whilst iterating it?  
+`[>]` You can use `len(range(list))` to iterate over its yield. That yielded value can be used an index to both know it and access the list item at that index.  
+
+`[?]` What alternatives does Python to iterating and enumerating a python list simulataneosly?  
+`[>]` You can use the `enumerate()` statement instead. More info under [Looping Techniques](https://docs.python.org/3/tutorial/datastructures.html#tut-loopidioms)
+
+
+
