@@ -636,7 +636,7 @@ def fib(n):    # write Fibonnacci series up to n
 ```
 
 `[?]` How does a function call another function?  
-`[?]` Each function has its own local symbol table, in which it has the name of the function and the reference to the function object. This also allows a variable to refer to the function variable.
+`[>]` Each function has its own local symbol table, in which it has the name of the function and the reference to the function object. This also allows a variable to refer to the function variable.
 
 ```{python}
 fib
