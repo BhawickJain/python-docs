@@ -470,8 +470,6 @@ __For Statements__
 __Range Statements__
 
 
-
-
 Predict the following results:
 
 ```{python}
@@ -497,12 +495,8 @@ range(-10, -100, -30)
 sum(range(4)) # 0 + 1 + 2 + 3
 ```
 
-```{python}
-help(list)
-```
-
-`[?]` How do you convert a `range(a)` into a `list`?  
-`[?]` 
+`[?]` How do you convert a `range(a)` into a `list`?  <br>
+`[>]` Use the `list()` function which takes an iterable object and puts its objects inside into a list
 
 ```{python}
 list(range(4))
@@ -524,4 +518,24 @@ for i in range(len(a)):
 `[>]` You can use the `enumerate()` statement instead. More info under [Looping Techniques](https://docs.python.org/3/tutorial/datastructures.html#tut-loopidioms)
 
 
+__Break and Continue, and Else Clauses on Loops__
 
+
+`[?]` What and when is the `break` statement used for?  
+`[>]` `break` is used to break out of a while or for loop.  
+
+`[?]` What and where is the `else` statement used for?  
+`[>]` `else` can be in a `for` and a `while` statement is executed when loop is exhausted either because nothing was run or the iterable is exhausted.  
+
+`[?]` What is the time when the `else` clause isn't executed?  
+`[>]` When there is a break in the loop.  
+
+`[?]` Conceptually, what is `for`, `else` statement similar to?  
+`[>]` Python's `try`, `else` statements.
+
+`[?]` What is a `continue` statement?  
+`[?]` What is a good use case for the `continue` statement?
+
+```{python}
+
+```
