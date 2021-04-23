@@ -536,6 +536,36 @@ __Break and Continue, and Else Clauses on Loops__
 `[?]` What is a `continue` statement?  
 `[?]` What is a good use case for the `continue` statement?
 
-```{python}
 
+__Pass Statements__
+
+`[?]` What does a pass statement do?  
+`[>]` Nothing, just tells the compiler to jog on to the next block.
+
+
+`[?]` Where might the `pass` clause be used for?
+
+
+Busy-wait statements
+
+```{python}
+while True:
+    pass # Busy-wait for keyboard interrupt (Ctrl+C)
+```
+
+minimal classes
+
+```{python}
+class MyEmptyClass:
+    pass
+```
+
+`[?]` what are minimal classes?
+
+
+placeholder for methods whilst they are under-development
+
+```{python}
+def initlog(*args):
+    pass # Remember to implement this!
 ```
