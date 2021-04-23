@@ -611,3 +611,23 @@ def initlog(*args):
 ```
 
 `[?]` Where can you use the pass statement in your work?
+
+
+__Defining Functions__
+
+`[?]` What does `def` stand for?  
+`[?]` How does a function manage its local variables?  
+`[>]` Through the creation of a new symbol table which stores all local variables.
+
+`[?]` How does a function find the value or method behind a word?  
+`[>]` It first checks its local symbol table, then another local symbol table for all the functions, then a global symbol table and then finally a table of built-in names. 
+
+`[?]` Where do the function parameters sit?  
+`[>]` In the local symbol table the moment you call it. This means when ever you call another function or itself (recursively) you end up creating a new symbol table for that call. The caller passes object references which the callee function uses. Once returned back to the caller, that function check for any changes to the objects it referred to.
+
+More documentation on [[docstrings](https://docs.python.org/3/tutorial/controlflow.html#tut-docstrings)] <br>
+`[?]` What are some good docstring practices?
+
+```{python}
+
+```
