@@ -533,10 +533,20 @@ __Break and Continue, and Else Clauses on Loops__
 `[?]` Conceptually, what is `for`, `else` statement similar to?  
 `[>]` Python's `try`, `else` statements.
 
+
 `[?]` What is a `continue` statement?  
 `[>]` The `continue` statement like the `pass` clause enables the compiler to do nothing under a block. If you have a loop which under an `if` evaluation simply need to iterate without doing anything else, that's where you use the `continue` clause.  
-`[ ]` Create an example of the above to demo this.
 
+example of using a `continue` clause
+
+```{python}
+for num in range(2, 10):
+    if num % 2 == 0:
+        print("Found an even number", num)
+        continue
+    print("Found an odd number", num)
+
+```
 
 `[?]` What is a good use case for the `continue` statement?
 
