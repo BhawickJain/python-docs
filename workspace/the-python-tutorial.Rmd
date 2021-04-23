@@ -625,6 +625,11 @@ __Defining Functions__
 `[?]` Where do the function parameters sit?  
 `[>]` In the local symbol table the moment you call it. This means when ever you call another function or itself (recursively) you end up creating a new symbol table for that call. The caller passes object references which the callee function uses. Once returned back to the caller, that function check for any changes to the objects it referred to.
 
+
+`[?]` How does a function call another function?  
+`[?]` Each function has its own local symbol table, in which it has the name of the function and the reference to the function object. This also allows a variable to refer to the function variable.
+
+
 More documentation on [[docstrings](https://docs.python.org/3/tutorial/controlflow.html#tut-docstrings)] <br>
 `[?]` What are some good docstring practices?
 
