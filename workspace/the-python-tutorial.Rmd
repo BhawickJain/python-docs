@@ -18,6 +18,8 @@ jupyter:
 
 A tour of the noteworthy features of the Python Language and introduces the [Python Standard Library](https://docs.python.org/3/library/index.html#library-index). Python Docs also offer a glossary of terms [[py-docs-glossary](https://docs.python.org/3/glossary.html#glossary)]
 
+`[?]` How do you define a dictionary?  
+
 
 ### Whetting your Appetite
 
