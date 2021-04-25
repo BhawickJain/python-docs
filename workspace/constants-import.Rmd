@@ -24,7 +24,15 @@ from src.constants import C, PI, K, G
 ```
 
 ```{python}
-G, C # Gravitational constant, Speed of Light
+C, PI  # Speed of Light and Pi
+```
+
+```{python}
+K # Boltzmann constant
+```
+
+```{python}
+G # Gravitational constant
 ```
 
 But is it _really_ a constant?
@@ -40,31 +48,4 @@ G
 In spite of being from another module, you can't make it immutable.
 
 
-`[?]` How do you make an imported variable immutable?  
-`[ ]` Maybe create a constants class?
-
-
-Interestingly when importing a variable name that is already occupied in symbol table throws an error. Lets define Rydberg constant as `RINF`:
-
-```{python}
-RINF = 10e6 # painfully rough
-```
-
-Lets import the constant which holds a more accurate number.
-
-```{python}
-from src.constants import RINF
-```
-
-Import Error occurs because RINF already exists. It doesn't seem to happen all the time but its worth remembering the potential clash.
-
-```{python}
-RINF
-```
-
-However if you import the constant but then overwrite it and then import the constant again, the error is not thrown. Generally, you don't want to use `import`, especially `import *` as you are flooding your namespace with the `module`'s namespace. Thereby inadvertently overwriting and clashing stuff. So you want to do this:
-
-```{python}
-import src.constants as constants
-constants.RINF
-```
+`[?]` How do you make an imported variable immutable?
