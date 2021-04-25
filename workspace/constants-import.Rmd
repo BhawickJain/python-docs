@@ -68,3 +68,19 @@ However if you import the constant but then overwrite it and then import the con
 import src.constants as constants
 constants.RINF
 ```
+
+Another subtlety is that if you change `RINF` you don't change `constants.RINF`. So you can reimport the `constants` module and recover the number (without restarting the nb kernel). However if you change `constants.RINF` you change the module's variable value instead, no importing will work [[so-import-variables](https://stackoverflow.com/questions/17255737/importing-variables-from-another-file)].
+
+```{python}
+constants.RINF = 0
+constants.RINF
+```
+
+```{python}
+RINF
+```
+
+```{python}
+from src.constants import RINF
+RINF
+```
