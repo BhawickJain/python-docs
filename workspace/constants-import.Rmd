@@ -34,3 +34,18 @@ K # Boltzmann constant
 ```{python}
 G # Gravitational constant
 ```
+
+But is it _really_ a constant?
+
+```{python}
+G = 0
+```
+
+```{python}
+G
+```
+
+In spite of being from another module, you can't make it immutable.
+
+
+`[?]` How do you make an imported variable immutable?
