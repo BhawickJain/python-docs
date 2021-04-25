@@ -1,0 +1,36 @@
+---
+jupyter:
+  jupytext:
+    formats: ipynb,Rmd
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.2'
+      jupytext_version: 1.11.1
+  kernelspec:
+    display_name: Python 3
+    language: python
+    name: python3
+---
+
+### Defining and importing constants
+
+Inpired by rubys/feedvalidator at [line 55](https://lgtm.com/projects/g/rubys/feedvalidator/snapshot/eb77aa864016e1071f37357746a3ad77de94432a/files/src/rdflib/syntax/parsers/RDFXMLHandler.py?sort=name&dir=ASC&mode=heatmap#L55)
+
+You can import another file as a module and use the variables within as constants.
+
+```{python}
+from src.constants import C, PI, K, G
+```
+
+```{python}
+C, PI  # Speed of Light and Pi
+```
+
+```{python}
+K # Boltzmann constant
+```
+
+```{python}
+G # Gravitational constant
+```
