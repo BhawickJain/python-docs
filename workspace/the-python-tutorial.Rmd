@@ -673,3 +673,68 @@ print(fib(0))
 
 `[?]` How does python enable user-defined type?  
 `[>]` Through `Class` blocks.
+
+
+__Functions and Arguments__
+
+```{python}
+def ask_ok(prompt, retries=4, reminder='Please Try again!'):
+    while True:
+        ok = input(prompt)
+        if ok in ('y', 'ye', 'yee', 'yes'):
+            return True
+        if ok in ('n', 'no', 'nop', 'nope'):
+            return False
+        retries = retries -1 
+        if retries < 0:
+            raise ValueError('invalid user response')
+        print(reminder)
+```
+
+`[?]` What are default arguments?  
+`[>]` They are just variable names with an assigned value in the function definition, `retries=4`. It allows for sane defaults, and reduces the number of argument you need to send in. 
+
+`[?]` Are there any example fo default arguments?  
+`[>]` The `range()` function has sane default for example.
+
+```{python}
+ask_ok("You feeling great?!")
+```
+
+```{python}
+ask_ok("You feeling great?", 2, reminder='you sure?')
+```
+
+`[?]` How do you check if a value exists in a sequence?  
+`[>]` using the `in` keyword.
+
+`[?]` Can the `in` keyword work with `list` and `tuple` types? What about other iterable types?  
+`[>]` Yes, all iterable types can be evaluated with the `in` keyword, including the `range()` function.
+
+```{python}
+a
+```
+
+```{python}
+'Mary' in a
+```
+
+```{python}
+b = (1, 2, 4)
+```
+
+```{python}
+4 in b
+```
+
+```{python}
+c = range(1,4)
+```
+
+```{python}
+3 in c
+```
+
+```{python}
+type(c)
+```
