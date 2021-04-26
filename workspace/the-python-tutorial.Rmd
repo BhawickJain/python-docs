@@ -514,11 +514,16 @@ for i in range(len(a)):
 ```
 
 `[?]` How might you use the `range` function enumerate a collection whilst iterating it?  
-`[>]` You can use `len(range(list))` to iterate over its yield. That yielded value can be used an index to both know it and access the list item at that index.  
+`[>]` You can use `len(range(list))` to iterate over its yield. That yielded value can be used an index to both know it and access the list item at that index. 
+
 
 `[?]` What alternatives does Python to iterating and enumerating a python list simulataneosly?  
 `[>]` You can use the `enumerate()` statement instead. More info under [Looping Techniques](https://docs.python.org/3/tutorial/datastructures.html#tut-loopidioms)
 
+```{python}
+for i, v in enumerate(a):
+    print(i, v)
+```
 
 __Break and Continue, and Else Clauses on Loops__
 
@@ -625,7 +630,7 @@ __Defining Functions__
 `[>]` It first checks its local symbol table, then another local symbol table for all the functions, then a global symbol table and then finally a table of built-in names. 
 
 `[?]` Where do the function parameters sit?  
-`[>]` In the local symbol table the moment you call it. This means when ever you call another function or itself (recursively) you end up creating a new symbol table for that call. The caller passes object references which the callee function uses. Once returned back to the caller, that function check for any changes to the objects it referred to.
+`[>]` In the local symbol table the moment you call it. This means when ever you call another function or itself (recursively) you end up creating a new symbol table for that call. The caller passes object references, instead of the values, which the callee function uses. Once returned back to the caller, that function check for any changes to the objects it referred to.
 
 ```{python}
 def fib(n):    # write Fibonnacci series up to n
@@ -651,3 +656,20 @@ f(100)
 
 More documentation on [[docstrings](https://docs.python.org/3/tutorial/controlflow.html#tut-docstrings)] <br>
 `[?]` What are some good docstring practices?
+
+
+`[?]` What the difference between a procedure and a function?  
+`[>]` A procedure doesn't return anything once it finishes, a function does.  
+
+`[?]` Are Python function always functions?  
+`[>]` Yes, as even without the `return` statement the function _still_ `None`
+
+`[?]` What happens when the function stops before return?  
+`[>]` Just returns `None`.
+
+```{python}
+print(fib(0))
+```
+
+`[?]` How does python enable user-defined type?  
+`[>]` Through `Class` blocks.
