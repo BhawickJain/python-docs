@@ -738,3 +738,87 @@ c = range(1,4)
 ```{python}
 type(c)
 ```
+
+`[?]` Predict what happens in the following block of code?  
+
+```{python}
+i = 5
+
+def f(arg=i):
+    print(arg)
+    
+i = 6
+f()
+```
+
+`[>]` `arg=5` as default argument are evaluated when defining the function. Including any expressions in the default arguments.
+
+```{python}
+i = 5
+
+def f(arg=i**2):
+    print(arg)
+    
+i = 6
+f()
+```
+
+`[?]` Are default arguements in a function shared between calls?  
+`[>]` Yes, default arguments which mutable like a list which are changed in function remain so in the next function all.
+
+`[?]` How many times are default arguments evaluated and what is the consequences of that?  
+`[>]` Default arguments are only evaluated once at function definition, this means if the function changes it, it remains to that new value for the next functino call.
+
+```{python}
+def f(a, L=[]):
+    L.append(a)
+    return L
+```
+
+```{python}
+f(1)
+```
+
+```{python}
+f(2)
+```
+
+```{python}
+f(3)
+```
+
+`[?]` How might you prevent the sharing of default arguments between calls?  
+`[>]` By setting the default argument to `None`, then changing it to the default value and type given it is None.
+
+```{python}
+def g(a, L=None):
+    if L is None:
+        L = []
+    L.append(a)
+    return L
+```
+
+```{python}
+g(1)
+```
+
+```{python}
+g(2)
+```
+
+`[?]` Is `None` always evaluated eventhough the function default argument are always evaluated once?  
+`[>]` My hunch is, that by setting the default arg as `None` you have not instatiated it in the symbol table. So when you declare the variable in the function you create fresh evaluation of each time, and resetting the value to a default.
+
+
+```{python}
+def h(a, L=None):
+    if L is None:
+        pass
+    return L
+```
+
+```{python}
+h(1)
+```
+
+Notice how L is nothing, the `return` statement doesn't even give `None` as an answer.
