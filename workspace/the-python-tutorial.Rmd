@@ -822,3 +822,82 @@ h(2)
 ```
 
 Notice how L is nothing, the `return` statement doesn't even give `None` as an answer.
+
+
+__Keyword Arguments__
+
+`[?]` What are keyword arguments? How are they different from normal arguments?  
+`[>]` They are just arguments which are preceded by an identifier. [[py-docs-kwarg](https://docs.python.org/3/glossary.html#term-argument)]  
+
+`[?]` Are default arguments keyword arguments?  
+`[?]` Yes.
+
+
+
+```{python}
+def parrot(voltage, state='a stuff', action='voom', type='Norwegian Blue'):
+    print("-- This parrot wouldn't", action, end=' ')
+    print("if you put", voltage, "voltags through it.")
+    print("-- Lovely plumage, the", type)
+    print("-- It's", state, "!")
+```
+
+`[?]` Identify the result the type of arguments being sent in.
+
+```{python}
+parrot(1000)
+```
+
+```{python}
+parrot(voltage=1000)
+```
+
+```{python}
+parrot(voltage=1000, action='VOOM')
+```
+
+```{python}
+parrot(action='VOOM', voltage=1000)
+```
+
+```{python}
+parrot('a million', 'bereft of life' 'jump')
+```
+
+```{python}
+parrot('a thousand', state='pushing up the daisies')
+```
+
+`[?]` Can you send a keyword argument a positional argument?  
+`[>]` Yes, you just need to make sure you match the position and it precedes any keyword arguments being declared.
+
+`[?]` Why might it be that you have you declare positional argument before keyword arguments?  
+`[>]` Because keyword arguments can be declared in any order, once you have declared a keyword argument it wouldn't necessarily be in the next position. So you can't assume positional arguments.
+
+
+`[?]` The following statements will throw errors, why might this be?
+
+```{python}
+parrot()
+parrot(voltage=5.0, 'dead')
+parrot(110, voltage=220)
+parrot(actor='John Cleese')
+```
+
+`[?]` How do you make an argument optional?  
+`[>]` By giving it a keyword argument with a default value.
+
+```{python}
+def function(a):
+    pass
+
+function(0, a=0)
+```
+
+__Tuple and Dictionary Arguments__
+
+
+
+```{python}
+
+```
