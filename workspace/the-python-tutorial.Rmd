@@ -899,5 +899,27 @@ __Tuple and Dictionary Arguments__
 
 
 ```{python}
-
+def cheeseshop(kind, *arguments, **keywords):
+    print("-- Do you have any", kind, "?")
+    print("-- I'm sorry, we're all out of", kind)
+    for arg in arguments:
+        print(arg)
+    print("-" * 40)
+    for kw in keywords:
+        print(kw, ":", keywords[kw])
 ```
+
+`[?]` Of what `type` are `*arguments` and `**keywords`? <br>
+`[>]` Arguments marked by `*` are tuples and `**` keyword dictionaries. see [[py-doc-map-dict](https://docs.python.org/3/library/stdtypes.html#typesmapping)] and [[py-docs-tuples](https://docs.python.org/3/tutorial/datastructures.html#tut-tuples)].
+
+```{python}
+cheeseshop("Limburger", "It's very runny, sir.",
+           "It's really very, VERY runny, sir.",
+           shopkeeper="Michael Palin",
+           client="John Cleese",
+           sketch="Cheese Shop Sketch")
+```
+
+`[?]` Can you think of function that would require these features? <br>
+`[?]` Why not use an `array` type instead of `tuple` for `*arguments`?  <br>
+`[>]` Because `tuples` immutable, which is handy here.
