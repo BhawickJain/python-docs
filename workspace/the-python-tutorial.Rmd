@@ -751,7 +751,7 @@ i = 6
 f()
 ```
 
-`[>]` `arg=5` as default argument are evaluated when defining the function. Including any expressions in the default arguments.
+`[>]` `arg=5` as default argument are evaluated when defining the function. Including any expressions in the default arguments. This makes this behaviour a little bit like `const expression` in C++.
 
 ```{python}
 i = 5
@@ -763,11 +763,11 @@ i = 6
 f()
 ```
 
-`[?]` Are default arguements in a function shared between calls?  
+`[?]` Are default arguments in a function shared between calls?  
 `[>]` Yes, default arguments which mutable like a list which are changed in function remain so in the next function all.
 
 `[?]` How many times are default arguments evaluated and what is the consequences of that?  
-`[>]` Default arguments are only evaluated once at function definition, this means if the function changes it, it remains to that new value for the next functino call.
+`[>]` Default arguments are only evaluated once at function definition, this means if the function changes it, it remains to that new value for the next function call. That initial value is never created because the original default expression is never reevaluated.
 
 ```{python}
 def f(a, L=[]):
@@ -806,8 +806,8 @@ g(1)
 g(2)
 ```
 
-`[?]` Is `None` always evaluated eventhough the function default argument are always evaluated once?  
-`[>]` My hunch is, that by setting the default arg as `None` you have not instatiated it in the symbol table. So when you declare the variable in the function you create fresh evaluation of each time, and resetting the value to a default.
+`[?]` Is `None` always evaluated even though the function default argument are always evaluated once?  
+`[>]` My hunch is, that by setting the default arg as `None` you have not instatiated it in the symbol table. So when you declare the variable inside the function do a fresh evaluation for that specific call which resets the value to a default.
 
 
 ```{python}
@@ -818,7 +818,7 @@ def h(a, L=None):
 ```
 
 ```{python}
-h(1)
+h(2)
 ```
 
 Notice how L is nothing, the `return` statement doesn't even give `None` as an answer.
