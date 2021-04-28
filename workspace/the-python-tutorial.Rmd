@@ -933,6 +933,127 @@ cheeseshop("Limburger", "It's very runny, sir.",
 `[?]` Why not use an `array` type instead of `tuple` for `*arguments`?  <br>
 `[>]` Because `tuples` immutable, which is handy here.
 
-```{python}
 
+__Special Parameters__
+
+`[?]` What additional notation can you use when defining a function?  
+`[>]` For the moment you can use `/` to say that to the left are positional arguments, and the right are position or keyword arguments, and `*` to the right are keyword only arguments. `def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2)`
+
+`[?]` Why would you use the special parameters?  
+`[>]` To force the user of the function to specify what parameters are positional or belong to a keyword. Without them, an argument can be both positional or a keyword.
+
+```{python}
+def standard_arg(arg):
+    print(arg)
+    
+def pos_only_arg(arg, /):
+    print(arg)
+
+def kwd_only_arg(*, arg):
+    print(arg)
+    
+def combined_example(pos_only, /, standard, *, kwd_only):
+    print(pos_only, standard, kwd_only)
 ```
+
+```{python}
+pos_only_arg(5)
+```
+
+```{python}
+kwd_only_arg(arg=5)
+```
+
+```{python}
+combined_example(5, standard=5, kwd_only=6)
+```
+
+```{python}
+combined_example(5, 5, kwd_only=6)
+```
+
+`[ ]` explain the error messages 
+
+```{python}
+kwd_only_arg(5)
+```
+
+```{python}
+combined_example(kwd_only=6, 5, 5)
+```
+
+```{python}
+combined_example(pos_only=6, 5, kwd_only=5)
+```
+
+This notation can be used to prevent potential collision between function parameter names and keyword dictionaries
+
+```{python}
+def foo(name, **kwds):
+    return 'name' in kwds
+```
+
+```{python}
+foo(1, **{'name':2})
+```
+
+Here what you are essentially sending in is: `foo(name=1, name=2)`
+
+```{python}
+def foo(name, /, **kwds):
+    return 'name' in kwds
+```
+
+```{python}
+foo(1, **{'name':2})
+```
+
+`[?]` For function safety, why you want to use a `/` between positional and keyword dictionary inputs?  
+`[>]` To prevent a potential clash in the names.
+
+
+`[?]` Why does the following function definition fail?
+
+```{python}
+def foo(name, *, **kwds):
+    return 'name' in kwds
+```
+
+`[>]` Because `*` is expecting a keyword argument straight after it, not a dictionary of keywords
+
+```{python}
+def foo(name, *, pos, **kwds):
+    return 'name' in kwds
+```
+
+```{python}
+foo('Ani', pos=5, **{'j':6, 'b':7})
+```
+
+```{python}
+def foo(name, /, *, pos, **kwds):
+    return 'name' in kwds
+```
+
+```{python}
+foo('Lemi', pos=8, **{'name':9, 'c':9})
+```
+
+```{python}
+foo('Lemi', 8, **{'name':9, 'c':9})
+```
+
+```{python}
+def foo(name, /, pos=8, **kwds):
+    return 'name' in kwds
+```
+
+```{python}
+foo('Lemi', 8, **{'name':9, 'c':9})
+```
+
+`[?]` Must `**kwds` Keyword dictionaries must always be the last terms in the function?
+
+
+`[?]` How do you specify a dictionary belongs to the `**kwds` parameter of the function?  
+`[>]` Use `**` to mark the dictionary to be the keyword dictionary parameter.
