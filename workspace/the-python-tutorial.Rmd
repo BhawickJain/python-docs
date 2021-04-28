@@ -1057,3 +1057,7 @@ foo('Lemi', 8, **{'name':9, 'c':9})
 
 `[?]` How do you specify a dictionary belongs to the `**kwds` parameter of the function?  
 `[>]` Use `**` to mark the dictionary to be the keyword dictionary parameter.
+
+
+`[?]` Why are some of the basic run in parameter definitions when defining a function?  
+`[>]` Positional argument then Keyword Arguments, Tuples, Keyword Dictinonaries, you can swap that order as then Python has no way of guaranteeing a match between the arguments sent in and the parameters.
