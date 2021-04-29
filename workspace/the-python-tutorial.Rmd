@@ -1030,6 +1030,8 @@ def foo(name, *, pos, **kwds):
 foo('Ani', pos=5, **{'j':6, 'b':7})
 ```
 
+`[?]` Which notation `*` or `/` can be removed without breaking the function?  
+
 ```{python}
 def foo(name, /, *, pos, **kwds):
     return 'name' in kwds
@@ -1039,9 +1041,13 @@ def foo(name, /, *, pos, **kwds):
 foo('Lemi', pos=8, **{'name':9, 'c':9})
 ```
 
+`[>]` Both `*` and `/` can be used but `*` forces the user to refer to the `pos` arg by its keyword.
+
 ```{python}
 foo('Lemi', 8, **{'name':9, 'c':9})
 ```
+
+Using the `/` can give additional flexibiity but with a potential name clash if `**kwds` also has a `pos` keyword.
 
 ```{python}
 def foo(name, /, pos=8, **kwds):
@@ -1052,12 +1058,38 @@ def foo(name, /, pos=8, **kwds):
 foo('Lemi', 8, **{'name':9, 'c':9})
 ```
 
-`[?]` Must `**kwds` Keyword dictionaries must always be the last terms in the function?
+```{python}
+foo('Lemi', 8, **{'pos':9, 'c':9})
+```
 
+`[?]` Must `**kwds` Keyword dictionaries must always be the last terms in the function?  
+`[>]` It must be a the last and only term as it enables an opportunity for the user of the function ot add additional keyword parameters they would other not be able to - without modifying the function itself.
 
-`[?]` How do you specify a dictionary belongs to the `**kwds` parameter of the function?  
+```{python}
+def foo(**kwds, word):
+    return 'name' in kwds
+```
+
+You can still send in additional keywords after the `pos` keyword which is referred to in the positional form.
+
+```{python}
+foo('Lemi', 8, name=9, c=9)
+```
+
+`[?]` How do you specify a dictionary belongs to the keyword dictionary parameter of the function?  
 `[>]` Use `**` to mark the dictionary to be the keyword dictionary parameter.
 
 
 `[?]` Why are some of the basic run in parameter definitions when defining a function?  
 `[>]` Positional argument then Keyword Arguments, Tuples, Keyword Dictinonaries, you can swap that order as then Python has no way of guaranteeing a match between the arguments sent in and the parameters.
+
+
+`[?]` Can you have multiple Keywords Dictionary parameters in a function?  
+`[>]` No, likely because of clashes. The only way to do it is to send two normal arguments as only one can be a keyword dictionary. [[so-two-kwd-arg](https://stackoverflow.com/questions/24355751/pass-multiple-dictionaries-to-a-function-as-an-argument)].
+
+```{python}
+def foo(word, **kwd1, **kwd2):
+    print(word)
+    print('name' in kwd1)
+    print('person' in kwd2)
+```
