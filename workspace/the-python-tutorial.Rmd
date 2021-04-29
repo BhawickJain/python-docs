@@ -1109,3 +1109,49 @@ def foo(word, **kwd1, **kwd2):
 `[>]` Best to use positional argument to prevent breaking changes if the name of the parameter is changed.  
 `[>]` That said, if the name of the parameter is changed it might also change meaning of the parameter so the change would be breaking anyway.  
 `[?]` Find an example where API change would support and no support positional-only arguments. Likely in CLI app development.  
+
+
+__Arbitrary Argument Lists__
+
+
+`[?]` What are `*arg` and `**kwds` referred to in functions?  
+`[>]` variadic arguments.
+
+`[?]` When are are they evaluated?  
+`[>]` At function call but only once all the positional and keyword arguments are satisfied.  
+
+
+`[?]` Can arguments be declared after `*arg`?  <br>
+`[>]` Yes but only keyword arguments.  
+
+```{python}
+def concat(*arg, sep='/'):
+    return sep.join(arg)
+```
+
+```{python}
+concat("folders","file")
+```
+
+```{python}
+concat("what", "three", "words", sep='.')
+```
+
+`[?]` Can arguments be delcared after `**kwds`?  <br>
+`[>]` No, it must be the last one.
+
+```{python}
+def keys(**kwds, end='\n'):
+    for k in kwds:
+        print(k,kwds[k], end)
+```
+
+```{python}
+def keys(end='\n', **kwds):
+    for k in kwds:
+        print(k, kwds[k], end)
+```
+
+```{python}
+keys(word=1, print=2)
+```
