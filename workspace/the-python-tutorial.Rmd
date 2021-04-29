@@ -1093,3 +1093,19 @@ def foo(word, **kwd1, **kwd2):
     print('name' in kwd1)
     print('person' in kwd2)
 ```
+
+`[?]` Do the rules for `**kwds` apply for `*args` too?
+
+
+`[?]` What makes positional arguments useful?  
+`[>]` Positional arguments don't have any meaning which means they are easier to use and the user can just write the values in the order defined in the docs. It also helps enforce the order whilst not making the names of the parameters available. A positional argument could be seen as the essential part of the function, like the `string` input of the `print()` function.  
+
+
+`[?]` What makes keyword arguments so useful?  
+`[>]` Keyword argument ensure user is used specifying the terms and this means less errors are made. Making and forcing the usage of the names of the parameters gives the user more meaning over the functionality available. This is useful when there are options which no obvious order to them for example.
+
+
+`[?]` What kind of argument should you use for APIs?  
+`[>]` Best to use positional argument to prevent breaking changes if the name of the parameter is changed.  
+`[>]` That said, if the name of the parameter is changed it might also change meaning of the parameter so the change would be breaking anyway.  
+`[?]` Find an example where API change would support and no support positional-only arguments. Likely in CLI app development.  
