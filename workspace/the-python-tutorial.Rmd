@@ -18,31 +18,38 @@ jupyter:
 
 A tour of the noteworthy features of the Python Language and introduces the [Python Standard Library](https://docs.python.org/3/library/index.html#library-index). Python Docs also offer a glossary of terms [[py-docs-glossary](https://docs.python.org/3/glossary.html#glossary)]
 
+
 `[?]` How do you define a dictionary?  
 
+```{python}
+dict = {"postcode":"BS1 5PL", "line1":"18 Parkstreet"}
+```
+
+```{python}
+type(dict)
+```
 
 ### Whetting your Appetite
 
 `[?]` What problems does Python solve?  
 `[>]` Slow development cycles like that of C/C++/Java, requiring write/compile/test/re-compiles. This is particularly true if you want to quickly write a test suite for a C/C++ library, writing it in Python is must faster.
 
-`[?]` Why might you use python over Bash scripts?
-`[>]` Python is portable across many platforms and is a fully features programming language unlike Bash.
+`[?]` Why might you use python over Bash scripts?  
+`[>]` Python is portable across many platforms and is a fully features programming language unlike Bash. Bash is also much harder to maintain if its codebase become very large.
 
-`[?]` What are high-level data typses?  
+`[?]` What are high-level data types?  
+`>>>` High-level data structures don't expose pointers, are simpler and on usally faster to implement reliably in general situations.
 
 `[?]` Why might an interpreted language be an advantage?  
-`[>]` No compiling and linking is necessary. The code can be written interactive thanks to this. This is helpful to bottom-up development of a program.
+`[>]` No compiling and linking is necessary. The code can be written interactively thanks to this. This is helpful to bottom-up development of a program.
 
 
 
 
 ### Invoking the Interpretor
 
-`[?]` Where is the python interpreter usually stored?
-`[>]` `/usr/local/bin/python3.9`. Usually placed in the `PATH` variable to make it aviaalbel in the shell directly.
-
-
+`[?]` Where is the python interpreter usually stored?  
+`[>]` `/usr/local/bin/python3.9`. Usually placed in the `PATH` variable to make it available in the shell directly.
 
 ```{python}
 # ! python3 --version
@@ -102,7 +109,10 @@ type(8%5)
 
 
 `[?]` What happens when you declare a variable that matches a function?  
-`[>]` You mask the function with the local variable making it inaccessible.
+`[>]` You mask the function with the local variable making it inaccessible. It almost as though have overwritten it in the local symbol table. Since the built-in symbol table is checked last, it won't check there.
+
+
+`[?]` How common is it accidently declare variable that has a function of the same name?
 
 ```{python}
 round(5.86,0)
@@ -140,6 +150,12 @@ print('first line.\nsecond line')
 ```
 
 `[?]` When placing `\n` in a string, do you need a space after it?  
+
+
+`>>>` No, since python knows its expecting a single character.
+
+
+`[?]` What other characters need to be escaped?
 
 
 `[?]` When `\n` is placed inside a string variable, what happens?
