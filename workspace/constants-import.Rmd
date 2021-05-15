@@ -84,7 +84,7 @@ RINF
 `>>>` Maybe but you don't want to allow the change in the first place. You need to modify how the `constant` module's attributes are modified.
 
 
-### Class Attribut based - Constants
+### Class Attributes based - Constants
 
 
 You can see that a constant can be overwritten even when coming from another module like `constant.RINF = 0`. This is because the `property()` function is still defined and leaves the object subject being changed. The `property` function manages the getting, setting, deleting of properties in the `__dict__` of the object. You can read more about it in [[py-docs-prop](https://docs.python.org/3/library/functions.html#property)].
@@ -101,6 +101,8 @@ import src.const as const
 ```
 
 Here the `__setattr__` built-in function is involved thanks to the assignment operator used against the `const.RINF`. The functions overwrites the default `__setattr__` behaviour with its own by checking if attribute name exists in the `const` class symbol table (`const.__dict__`). If it does it throwns a custom `ConstError` otherwise goes ahead and assigns the name, value pair in the `const` class `__dict__`.
+
+[[py-docs-abc](https://docs.python.org/3/tutorial/errors.html#raising-exceptions)] Abstract base classes
 
 ```{python}
 const.RINF = RINF
@@ -135,6 +137,12 @@ const.__dict__
 ## Class function based - Constants
 
 
+[[py-docs-typefinal](https://docs.python.org/3/library/typing.html#typing.Final)] `typing.Final`  
+[[so-creating-const](https://stackoverflow.com/questions/2682745/how-do-i-create-a-constant-in-python?noredirect=1&lq=1) `Stackoverflow - Creating Constants`]
+
+
+### Using `typing.final`
+
 
 
 ```{python}
@@ -158,15 +166,6 @@ JO
 ```
 
 ```{python}
-class func1():
-    a = 1
-```
-
-```{python}
-func1.__dict__
-```
-
-```{python}
 class constant():
     
     
@@ -178,6 +177,13 @@ class constant():
 constant.tree()
 ```
 
+### Using @property decorator
+
+[[ffc-propdeco](https://www.freecodecamp.org/news/python-property-decorator/)] The @property Decorator in Python: It Use Cases, Advantages, and Syntax  
+[[zhou-decolev](https://medium.com/techtofreedom/7-levels-of-using-decorators-in-python-370473fcbe76)] 7 Levels of Using Decorators  
+[[so-creating-const](https://stackoverflow.com/questions/2682745/how-do-i-create-a-constant-in-python?noredirect=1&lq=1) `Stackoverflow - Creating Constants`]
+
+
 ```{python}
 @property
 def CONST_A():
@@ -186,24 +192,4 @@ def CONST_A():
 
 ```{python}
 print(CONST_A)
-```
-
-```{python}
-dict = {'name':'tom'}
-```
-
-```{python}
-dict['name']
-```
-
-```{python}
-dict['age'] = 32
-```
-
-```{python}
-dict
-```
-
-```{python}
-
 ```
