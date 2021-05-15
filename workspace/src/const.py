@@ -18,5 +18,5 @@ class _const:
             
         raise NameError(name)
 
-import sys
-sys.modules[__name__] = _const()
+# import sys
+# sys.modules[__name__] = _const()  # add _const as const in sys module
