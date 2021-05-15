@@ -1171,3 +1171,7 @@ def keys(end='\n', **kwds):
 ```{python}
 keys(word=1, print=2)
 ```
+
+### Style Guide
+
+[[pep-8](https://www.python.org/dev/peps/pep-0008/)] Style Guide for Python Code -- [trace](https://stackoverflow.com/questions/3298464/how-can-i-learn-more-about-python-s-internals)
