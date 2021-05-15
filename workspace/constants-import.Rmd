@@ -44,7 +44,7 @@ In spite of being from another module, you can't make it immutable.
 `[ ]` Maybe create a constants class?
 
 
-Interestingly when importing a variable name that is already occupied in symbol table throws an error. Lets define Rydberg constant as `RINF`:
+Lets define Rydberg constant as `RINF`:
 
 ```{python}
 RINF = 10e6 # painfully rough
@@ -56,13 +56,13 @@ Lets import the constant which holds a more accurate number.
 from src.constants import RINF
 ```
 
-Import Error occurs because RINF already exists. It doesn't seem to happen all the time but its worth remembering the potential clash.
+RINF already exists but is overwritten. In the past I have seen error being thrown because of this. It doesn't seem to happen all the time but its worth remembering the potential clash.
 
 ```{python}
 RINF
 ```
 
-However if you import the constant but then overwrite it and then import the constant again, the error is not thrown. Generally, you don't want to use `import`, especially `import *` as you are flooding your namespace with the `module`'s namespace. Thereby inadvertently overwriting and clashing stuff. So you want to do this:
+Generally, you don't want to use `import`, especially `import *` as you are flooding your namespace with the `module`'s namespace. Thereby inadvertently overwriting and clashing stuff. So you want to do this:
 
 ```{python}
 import src.constants as constants
@@ -80,9 +80,107 @@ constants.RINF
 RINF
 ```
 
+`[?]` Is there a way to force the rereading of the file?  
+`>>>` Maybe but you don't want to allow the change in the first place. You need to modify how the `constant` module's attributes are modified.
+
+
+### Constant modules
+
+
+You can see that a constant can be overwritten even when coming from another module like `constant.RINF = 0`. This is because the `property()` function is still defined and leaves the object subject being changed. The `property` function manages the getting, setting, deleting of properties in the `__dict__` of the object. You can read more about it in [[py-docs-prop](https://docs.python.org/3/library/functions.html#property)].
+
 ```{python}
 from src.constants import RINF
 RINF
 ```
 
-`[?]` Is there a way to force the rereading of the file?
+In `.src/const.py` there is a `const` class that holds all the attributes and manages then with its own get, set and delete attributes methods.
+
+```{python}
+import src.const as const
+```
+
+Here the `__setattr__` built-in function is involved thanks to the assignment operator used against the `const.RINF`. The functions overwrites the default `__setattr__` behaviour with its own by checking if attribute name exists in the `const` class symbol table (`const.__dict__`). If it does it throwns a custom `ConstError` otherwise goes ahead and assigns the name, value pair in the `const` class `__dict__`.
+
+```{python}
+const.RINF = RINF
+```
+
+```{python}
+const.RINF
+```
+
+```{python}
+const.RINF = 80
+```
+
+```{python}
+from typing import final
+```
+
+```{python}
+JO: final = RINF
+```
+
+```{python}
+JO
+```
+
+```{python}
+JO = 1
+```
+
+```{python}
+JO
+```
+
+```{python}
+class func1():
+    a = 1
+```
+
+```{python}
+func1.__dict__
+```
+
+```{python}
+class constant():
+    
+    
+    def tree():
+        return "baum"
+```
+
+```{python}
+constant.tree()
+```
+
+```{python}
+@property
+def CONST_A():
+    return 43
+```
+
+```{python}
+print(CONST_A)
+```
+
+```{python}
+dict = {'name':'tom'}
+```
+
+```{python}
+dict['name']
+```
+
+```{python}
+dict['age'] = 32
+```
+
+```{python}
+dict
+```
+
+```{python}
+
+```
