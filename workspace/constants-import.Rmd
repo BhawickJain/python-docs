@@ -134,7 +134,7 @@ const.__dict__
 `[ ]` Disable `line 23-24` in `const.py`, restart the kernel and rerun the cells above. What is the difference and why? How come `const.RINF` is mutable?
 
 
-## Class function based - Constants
+### Class function based - Constants
 
 
 [[py-docs-typefinal](https://docs.python.org/3/library/typing.html#typing.Final)] `typing.Final`  
@@ -143,7 +143,7 @@ const.__dict__
 
 ### Using `typing.final`
 
-
+This is relatively new feature which was introduced in Python 3.8 [[pep-591](https://www.python.org/dev/peps/pep-0591/)].
 
 ```{python}
 from typing import final
@@ -157,24 +157,14 @@ JO: final = RINF
 JO
 ```
 
+Tthe `typing.Final` does not inhibit mutability but instead get warned using static type checkers like [[`mypy`](http://mypy-lang.org/examples.html)].
+
 ```{python}
 JO = 1
 ```
 
 ```{python}
 JO
-```
-
-```{python}
-class constant():
-    
-    
-    def tree():
-        return "baum"
-```
-
-```{python}
-constant.tree()
 ```
 
 ### Using @property decorator
