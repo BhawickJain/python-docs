@@ -84,7 +84,7 @@ RINF
 `>>>` Maybe but you don't want to allow the change in the first place. You need to modify how the `constant` module's attributes are modified.
 
 
-### Constant modules
+### Class Attribut based - Constants
 
 
 You can see that a constant can be overwritten even when coming from another module like `constant.RINF = 0`. This is because the `property()` function is still defined and leaves the object subject being changed. The `property` function manages the getting, setting, deleting of properties in the `__dict__` of the object. You can read more about it in [[py-docs-prop](https://docs.python.org/3/library/functions.html#property)].
@@ -110,9 +110,32 @@ const.RINF = RINF
 const.RINF
 ```
 
+If you reassign, the `__setattr__` is invoked again but this time, `RINF` already exists in the `const` class symbol table. Thereby throwing an error.
+
 ```{python}
-const.RINF = 80
+# const.RINF = 80
+# _ConstError
 ```
+
+`line 23-24` in `src.const.py`overwrite the `syst.module.const` with the hidden `_const` class. This means any attributes added to `const` are instances of the `_const` instead of the `const.py` module. It means you can then enforce the `__setattr` functions against those attributes. Since the class and the constant error `_ConstError` class is hidden, only the constants are available to see.
+
+Read more about `sys.modules` [[py-docs-sysmod](https://docs.python.org/3/library/sys.html#sys.modules)]
+
+```{python}
+type(const)
+```
+
+```{python}
+const.__dict__
+```
+
+`[ ]` Disable `line 23-24` in `const.py`, restart the kernel and rerun the cells above. What is the difference and why? How come `const.RINF` is mutable?
+
+
+## Class function based - Constants
+
+
+
 
 ```{python}
 from typing import final
