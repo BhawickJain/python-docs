@@ -171,7 +171,7 @@ JO
 
 [[ffc-propdeco](https://www.freecodecamp.org/news/python-property-decorator/)] The @property Decorator in Python: It Use Cases, Advantages, and Syntax  
 [[zhou-decolev](https://medium.com/techtofreedom/7-levels-of-using-decorators-in-python-370473fcbe76)] 7 Levels of Using Decorators  
-[[so-creating-const](https://stackoverflow.com/questions/2682745/how-do-i-create-a-constant-in-python?noredirect=1&lq=1) `Stackoverflow - Creating Constants`]
+[[so-creating-const](https://stackoverflow.com/questions/2682745/how-do-i-create-a-constant-in-python?noredirect=1&lq=1)] Stackoverflow - Creating Constants
 
 
 ```{python}
@@ -197,7 +197,3 @@ constp.ETA = 70
 ```
 
 One could disallow that by defining a `__setattr__` as raising an error. Uncomment the `__setattr__` definition in the `propconst.py` file, reimport and rerun the statement above. But _feels_ this is less elegant.
-
-```{python}
-
-```
