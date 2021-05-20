@@ -175,11 +175,25 @@ JO
 
 
 ```{python}
-@property
-def CONST_A():
-    return 43
+help(property)
 ```
 
 ```{python}
-print(CONST_A)
+import src.propconst as constp
 ```
+
+```{python}
+constp.PI
+```
+
+```{python}
+# constp.PI = 60 # Attribute Error
+```
+
+The `constp` allows you to define all your constants as functions in one place. It uses the more pythonic `@` decorator which gives a very concise expression. Unlike `const` you can't define a new constant on the fly as you are not altering the `fget` and `fset` functions of how the class attributes are managed. This means you can create a new attribute against the class which isn't a constant.
+
+```{python}
+constp.ETA = 70
+```
+
+One could disallow that by defining a `__setattr__` as raising an error.
