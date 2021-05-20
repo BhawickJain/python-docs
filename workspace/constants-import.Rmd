@@ -167,6 +167,9 @@ JO = 1
 JO
 ```
 
+`[?]` Is defining constants a step away from idiomatic python coding style?
+
+
 ### Using @property decorator
 
 [[ffc-propdeco](https://www.freecodecamp.org/news/python-property-decorator/)] The @property Decorator in Python: It Use Cases, Advantages, and Syntax  
