@@ -196,4 +196,8 @@ The `constp` allows you to define all your constants as functions in one place. 
 constp.ETA = 70
 ```
 
-One could disallow that by defining a `__setattr__` as raising an error.
+One could disallow that by defining a `__setattr__` as raising an error. Uncomment the `__setattr__` definition in the `propconst.py` file, reimport and rerun the statement above. But _feels_ this is less elegant.
+
+```{python}
+
+```

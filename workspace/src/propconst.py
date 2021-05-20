@@ -11,5 +11,9 @@ class _const:
     def PI(self):
         return 3.14
     
+#     # Uncomment to disallow new attributes to be set    
+#     def __setattr__(self, name, value):
+#         raise TypeError("Setting new attributes not allowed")
+    
 import sys
 sys.modules[__name__] = _const()
