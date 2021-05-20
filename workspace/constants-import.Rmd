@@ -181,6 +181,8 @@ JO
 help(property)
 ```
 
+`[?]` Can the `@property` decorator be used outside a class definition?
+
 ```{python}
 import src.propconst as constp
 ```
