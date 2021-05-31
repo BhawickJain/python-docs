@@ -7,7 +7,7 @@ class TestCalc(unittest.TestCase):
     def setUp(self):
         """Set up test case input before each unit test"""
         self.numPairA = 10,5
-        self.sumPairB = 10,0
+        self.numPairB = 10,0
         
     def tearDown(self):
         """Run below to do any clean up after each unit test"""
@@ -15,26 +15,27 @@ class TestCalc(unittest.TestCase):
     
     
     def test_add(self):
-        result = calc.add(10,5)
+        result = calc.add(*self.numPairA) # using the spread tuple/array operator
         self.assertEqual(result, 15)
 
     def test_subtract(self):
-        result = calc.subtract(10,5)
+        result = calc.subtract(*self.numPairA)
         self.assertEqual(result, 5)
         
     def test_muliply(self):
-        result = calc.multiply(10,5)
+        result = calc.multiply(*self.numPairA)
         self.assertEqual(result, 50)
         
     def test_divide(self):
-        result = calc.divide(10,5)
+        result = calc.divide(*self.numPairA)
         self.assertEqual(result, 2)
        
 #         self.assertRaises(ZeroDivisionError, calc.divide, 10, 0)
 
-        # alternative nicer way
+        # alternative with Context Manager
         with self.assertRaises(ZeroDivisionError):
-            calc.divide(10,0)
+            calc.divide(*self.numPairB)
 
+            
 if __name__ == "__main__":
     unittest.main()
