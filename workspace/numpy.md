@@ -6,8 +6,6 @@ author:
 or: 20210706194228
 ---
 
-Github Repo: [[ChabotGh-Workshop](#ChabotGh-Workshop)]
-
 ### Simple problem statement
 
 ```python
@@ -492,7 +490,8 @@ Other reduce functions
               [4,5,6]])
 ```
 <!-- #region -->
-# Mathematical Functions
+## Mathematical Functions
+
 ```python
 >>> a.sum()
 21
@@ -562,7 +561,7 @@ array([ 6, 15])
 <!-- #endregion -->
 
 <!-- #region -->
-# Statistical
+## Statistical
 
 ```python
 >>> a.std() # standard deviation
@@ -572,7 +571,7 @@ array([ 6, 15])
 2.9166666666666665
 ```
 
-# Truth value testing
+## Truth value testing
 
 ```python
 >>> np.array([0,1,0]).any()
@@ -588,8 +587,8 @@ False
 True
 ```
 
-# Python treat non-zero values as True
-# this holds in NumPy
+## Python treat non-zero values as True
+## this holds in NumPy
 
 ```python
 >>> np.array([0,0.1,0]).any() # non-zero are considered true
@@ -701,3 +700,5 @@ Introduction to Numerical Computing with NumPy Workshop - Github Repo — Alex C
 
 <a id="2015-Ramanho">[2015-Ramanho]</a>
 Fluent Python — Luciano Ramanho (O'Reilly)(2015) [[Github](https://github.com/fluentpython)] [[O'Reilly Book](https://www.oreilly.com/library/view/fluent-python/9781491946237/)]
+
+Github Repo: [[ChabotGh-Workshop](#ChabotGh-Workshop)]
