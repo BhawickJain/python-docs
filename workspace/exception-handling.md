@@ -60,7 +60,7 @@ TypeError: can only concatenate str (not "int") to str
 ```
 <!-- #endregion -->
 
-There is a list of [Built in Exceptions](https://docs.python.org/3/library/exceptions.html#bltin-exceptions) available in the python docs [2].
+There is a list of [Built-in Exceptions](https://docs.python.org/3/library/exceptions.html#bltin-exceptions) available in the python docs [2].
 
 
 ### Handling Exceptions
@@ -166,7 +166,7 @@ for arg in sys.argv[1:]:
     except OSError:
         print('cannot open', arg)
     else: 
-        # runs statements regardless of try or except scenarios.
+        # runs statements when none of except scenarios match, important to have.
         print(arg, 'has', len(f.readlines()), 'lines')
         f.close()
 ```
@@ -273,6 +273,211 @@ NameError                                 Traceback (most recent call last)
 NameError: HiThere
 ```
 <!-- #endregion -->
+
+```python
+def func():
+    raise IOError
+    
+try: 
+    func()
+except IOError as exc:
+    raise RuntimeError('Faised to open database') from exc
+```
+
+<!-- #region -->
+```python
+---------------------------------------------------------------------------
+OSError                                   Traceback (most recent call last)
+/tmp/ipykernel_70/1798935421.py in <module>
+      4 try:
+----> 5     func()
+      6 except IOError as exc:
+
+/tmp/ipykernel_70/1798935421.py in func()
+      1 def func():
+----> 2     raise IOError
+      3 
+
+OSError: 
+
+The above exception was the direct cause of the following exception:
+
+RuntimeError                              Traceback (most recent call last)
+/tmp/ipykernel_70/1798935421.py in <module>
+      5     func()
+      6 except IOError as exc:
+----> 7     raise RuntimeError('Falsed to open database') from exc
+
+RuntimeError: Falsed to open database
+```
+<!-- #endregion -->
+
+note that the `from exc` is a default feature, that is if an exception is thrown whilst an exception is being handled, the initial exception is preserved:
+
+```python
+def func():
+    raise IOError
+    
+try:
+    func()
+except IOError as exc:
+    raise RuntimeError('Failed to open database')
+```
+
+<!-- #region -->
+```python
+---------------------------------------------------------------------------
+OSError                                   Traceback (most recent call last)
+/tmp/ipykernel_70/551355716.py in <module>
+      4 try:
+----> 5     func()
+      6 except IOError as exc:
+
+/tmp/ipykernel_70/551355716.py in func()
+      1 def func():
+----> 2     raise IOError
+      3 
+
+OSError: 
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError                              Traceback (most recent call last)
+/tmp/ipykernel_70/551355716.py in <module>
+      5     func()
+      6 except IOError as exc:
+----> 7     raise RuntimeError('Failed to open database')
+
+RuntimeError: Failed to open database
+```
+<!-- #endregion -->
+
+```python
+try:
+    open('database.sqlite')
+except OSError:
+    raise RuntimeError from None # OSError was not preserved
+```
+
+<!-- #region -->
+```python
+---------------------------------------------------------------------------
+RuntimeError                              Traceback (most recent call last)
+/tmp/ipykernel_70/669350098.py in <module>
+      2     open('database.sqlite')
+      3 except OSError:
+----> 4     raise RuntimeError m
+RuntimeError: 
+```
+<!-- #endregion -->
+
+### User-defined Exceptions
+
+```python
+class Error(Exception):
+    """Base class for exceptions in this module."""
+    pass
+
+class InputError(Error):
+    """Exception raised for error in the input.
+    
+    Attributes: 
+        expression -- input expression in which the error occurred
+        message -- explanation of the error
+    """
+    
+    def __init__(self, expression, message):
+        self.expression = expression
+        self.message = message
+        
+class TRansitionError(Error):
+    """Raised when an operation attempts a state transition that's not allowed.
+    
+    Attributes:
+        previous -- state at beginning of transition
+        next -- attempted new state
+        message -- explanation of mwhy the specific transition is not allowed
+    """
+
+    def __init__(self, previous, next, message):
+        self.previous = previous
+        self.next = next
+        self.message = message
+```
+
+### Defining Clean-up Actions
+
+```python
+try:
+    raise KeyboardInterrupt
+finally:
+    print('Goodbye, world!')
+```
+
+<!-- #region -->
+```python
+---------------------------------------------------------------------------
+KeyboardInterrupt                         Traceback (most recent call last)
+/tmp/ipykernel_70/163421838.py in <module>
+      1 try:
+----> 2     raise KeyboardInterrupt
+      3 finally:
+      4     print('Goodbye, world!')
+
+KeyboardInterrupt: 
+```
+<!-- #endregion -->
+
+```python
+def bool_return():
+    try:
+        return True
+    finally:
+        return False
+    
+bool_return()
+```
+
+```python
+def divide(x, y):
+    try:
+        result = x/y
+    except ZeroDivisionError:
+        print('division by zero!')
+    else:
+        print('result is', result)
+    finally:
+        print('executing finally clause')
+```
+
+```python
+divide(2,0)
+```
+
+```python
+divide(2,0)
+```
+
+```python
+divide('2', '1')
+```
+
+some objects have predefined clean up actions
+
+```python
+for line in open('myfile.txt'):
+    print(line, end=' ')
+    
+# this is brain-dead code, effectively leaving the file open
+```
+
+the following method has a `finally` statement built in.
+
+```python
+with open("myfile.txt") as f:
+    for line in f:
+        print(line, end=" ")
+```
 
 ### References
 
