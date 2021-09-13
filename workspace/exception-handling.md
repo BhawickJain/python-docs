@@ -2,6 +2,9 @@
 
 
 
+
+#### Types of Errors
+
 ```python
 while True print('Hello')
 ```
@@ -63,7 +66,7 @@ TypeError: can only concatenate str (not "int") to str
 There is a list of [Built-in Exceptions](https://docs.python.org/3/library/exceptions.html#bltin-exceptions) available in the python docs [2].
 
 
-### Handling Exceptions
+#### Handling Exceptions
 
 ```python
 go = True
@@ -144,14 +147,21 @@ try:
     f = open('myfile.txt')
     s = f.readline()
     i = int(s.strip())
+# except FileNotFoundError as err:
+#     print(f"File not found: {err}")
 except OSError as err:
     print("OS Error: {0}".format(err))
 except ValueError:
-    print("Coulb not convert data to an integer.")
+    print("Could not convert data to an integer.")
 except:
     print("Unexpcted error:", system.exc_info()[0])
     raise
 ```
+
+Interesting that `FileNotFoundError` must be a derived class of `OSError`.
+
+`[?]` Is the `FileNotFoundError` a derived class of the more generic `OSError`?  
+`[?]` Is it better to use the more generic `OSError` in the code example below?
 
 <!-- #region -->
 ```python
@@ -354,7 +364,6 @@ RuntimeError: Failed to open database
 
 ```python
 try:
-    open('database.sqlite')
 except OSError:
     raise RuntimeError from None # OSError was not preserved
 ```
@@ -390,7 +399,7 @@ class InputError(Error):
         self.expression = expression
         self.message = message
         
-class TRansitionError(Error):
+class TransitionError(Error):
     """Raised when an operation attempts a state transition that's not allowed.
     
     Attributes:
@@ -404,6 +413,36 @@ class TRansitionError(Error):
         self.next = next
         self.message = message
 ```
+
+```python
+raise InputError("a", "message")
+```
+
+<!-- #region -->
+```python
+---------------------------------------------------------------------------
+InputError                                Traceback (most recent call last)
+/tmp/ipykernel_31/1390501804.py in <module>
+----> 1 raise InputError("a", "message")
+
+InputError: ('a', 'message')
+```
+<!-- #endregion -->
+
+```python
+raise TransitionError("a", "b", "message")
+```
+
+<!-- #region -->
+```python
+---------------------------------------------------------------------------
+TransitionError                           Traceback (most recent call last)
+/tmp/ipykernel_31/1582602960.py in <module>
+----> 1 raise TransitionError("a", "b", "message")
+
+TransitionError: ('a', 'b', 'message')
+```
+<!-- #endregion -->
 
 ### Defining Clean-up Actions
 
@@ -471,7 +510,7 @@ for line in open('myfile.txt'):
 # this is brain-dead code, effectively leaving the file open
 ```
 
-the following method has a `finally` statement built in.
+the following method has a `finally` statement built in such that the open file is always closed when the scope exited.
 
 ```python
 with open("myfile.txt") as f:
