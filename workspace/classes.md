@@ -366,5 +366,30 @@ Uses the [`StopIteration`](https://docs.python.org/3/library/exceptions.html#Sto
 `[?]` How can a generator be used to make the `Reverse` implementation even more concise?
 
 ```python
+IterableObject = "abc"
 
+class ReverseEnumerate(Reverse):
+    
+    def __next__(self):
+        """
+        return
+        ------
+        index, next item
+        """
+    
+        if self.index == 0:
+            raise StopIteration
+        self.index -= 1
+
+        return self.index, self.data[self.index]       
+```
+
+```python
+a = ReverseEnumerate("abc")
+for i, v in a:
+    print(i, v)
+    
+# 2 c
+# 1 b
+# 0 a
 ```
