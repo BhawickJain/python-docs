@@ -393,3 +393,113 @@ for i, v in a:
 # 1 b
 # 0 a
 ```
+
+### Private Definitions
+Private Definitions can be defined by beginning the name with `_`. 
+
+Private definitions can be accessed, including dunders when beginning with `_`, such as `object._`...
+
+```python
+class PrivateClassMethod:
+    
+    def __init__(self, a):
+        self.a = a
+        
+#     def stringify(self):
+#         __str__(self)
+    
+    def __str__(self):
+        _str_rep(self.a)
+
+    @classmethod
+    def _str_rep(cls, string):
+        return str(string)
+```
+
+```python
+c = PrivateClassMethod("private print method")
+```
+
+```python
+PrivateClassMethod._str_rep("print")
+```
+
+Using the `dir` method you can see that the private method is visible. [[src](https://stackoverflow.com/questions/451963/making-a-method-private-in-a-python-subclass)]
+
+```python
+dir(PrivateClassMethod)
+```
+
+```python
+class AddonPrivateClassMethod(PrivateClassMethod):
+    def __str__(self):
+        return self._str_rep((self.a + ' x ')*2)
+```
+
+```python
+d = AddonPrivateClassMethod("additional class")
+```
+
+```python
+str(d)
+```
+
+```python
+class Dog(object):
+    
+    @classmethod
+    def __bark(self):
+        print("woof")
+```
+
+```python
+Dog._Dog__bark()
+```
+
+```python
+class Num:
+    def __init__(self,num):
+        self.n1 = num
+
+class Num2(Num):
+    def show(self):
+        print(self.n1)
+
+mynumber = Num2(8)
+mynumber.show()
+```
+
+```python
+class Num2(Num):
+    def __init__(self,num):
+        self.n2 = num*2
+    
+    def show(self):
+        print(self.n1, self.n2)
+```
+
+```python
+mynumber = Num2(8)
+mynumber.show()
+```
+
+the correction for this is
+
+```python
+class Num2(Num):
+    def __init__(self,num):
+        """
+        Run __init__ of base class to get attributes and setup
+        that provides before adding additional ones
+        """
+        Num.__init__(self,num)
+        self.n2 = num*2
+        
+    def show(self):
+        print(self.n1, self.n2)
+```
+
+```python
+mynumber = Num2(8)
+mynumber.show()
+```
