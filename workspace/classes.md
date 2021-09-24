@@ -503,3 +503,25 @@ class Num2(Num):
 mynumber = Num2(8)
 mynumber.show()
 ```
+
+Trying to mimick PyTorch `__init__` definition of `super()` in [[src](https://pytorch.org/docs/stable/_modules/torch/nn/modules/container.html#Sequential)]  
+`[?]` See if you can implement the above with `super()`
+
+```python
+class Num2(Num):
+    def __init__(self, num):
+        """
+        Run __init__ of base class to get attributes and setup
+        that provides before adding additional ones
+        """
+        super(Num, self).__init__()
+        self.n2 = num*2
+    
+    def show(self):
+        print(self.n1, self.n2)
+```
+
+```python
+mynumber = Num2(8)
+mynumber.show()
+```
