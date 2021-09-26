@@ -457,6 +457,11 @@ Dog._Dog__bark()
 ```
 
 ```python
+dexter = Dog()
+dexter._Dog__bark()
+```
+
+```python
 class Num:
     def __init__(self,num):
         self.n1 = num
@@ -524,4 +529,71 @@ class Num2(Num):
 ```python
 mynumber = Num2(8)
 mynumber.show()
+```
+
+## `@property`
+
+```python
+class C_sugar:
+    
+    def __init__(self):
+        self._x = None
+    
+    @property
+    def x(self):
+        return self._x
+    
+    @x.setter
+    def setx(self, value):
+        self._x = value
+    
+    @x.deleter
+    def delx(self, value):
+        self._x = None
+```
+
+Every attribute has a set of function that allow python to _get_, _set_ and _delete_ value in that attribute. They are called `fget`, `fset` and `fdel`. There is a built-in function called `property(f)`, where `f` is a function that allows you to change an attributes means of access by setting custom functions.
+
+
+In the example we created a private attribute `_x` and a function called `x`. The function has the `property` decorator which makes the function itself an `fget`. Since `x` is an attribute to that function, we can now access `x` to access `_x` without having to call it directly.
+
+```python
+c = C()
+c.x
+```
+
+Without using syntactic sugar, this is what the `@property` is doing.
+
+```python
+class C:
+    
+    def __init__(self):
+        self._x = None
+        
+    def getx(self):
+        return self._x
+    
+    def setx(self, value):
+        self._x = value
+        
+    def delx(self, value):
+        self._x = None
+        
+    x = property(getx, setx, delx, 'x is a hidden property')
+```
+
+```python
+c = C()
+c.x = "value"
+```
+
+You could create a `classproperty` [[src](https://stackoverflow.com/questions/5189699/how-to-make-a-class-property)]
+
+
+## `@classmethod` and `staticmethod`
+
+```python
+https://stackoverflow.com/questions/12179271/meaning-of-classmethod-and-staticmethod-for-beginner
+
+
 ```
