@@ -79,6 +79,9 @@ def healine1(text, width==80, fill_char="-"):
 !mypy headlines-python2.py
 ```
 
+`[ ]` `mypy` could be run as part of `make test`
+
+
 ### References
 
 1. [the state of type hints in python -- Bernát Gábor](https://bernat.tech/posts/the-state-of-type-hints-in-python)
