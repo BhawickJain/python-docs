@@ -15,30 +15,43 @@ FILES = input output
 
 # The @ makes sure that the command itself isn't echoed in the terminal
 help:
-	@echo "---------------HELP-----------------"
-	@echo "To setup the project type make setup"
-	@echo "To test the project type make test"
-	@echo "To run the project type make run"
-	@echo "------------------------------------"
+	@echo "make setup"
+	@echo "     Install packages for project"
+	@echo "make test"
+	@echo "     Run tests"
+	@echo "make run"
+	@echo "     run project (to be continued)"
+	@echo "make clean"
+	@echo "     remove cached folders and files from testing and nbs"
+	@echo "make typing"
+	@echo "     Run type hinting checker"
 
 # This generates the desired project file structure
 # A very important thing to note is that macros (or makefile variables) are referenced in the target's code with a single dollar sign ${}, but all script variables are referenced with two dollar signs $${}
 setup:
-	
-	@echo "Checking if project files are generated..."
-	[ -d project_files.project ] || (echo "No directory found, generating..." && mkdir project_files.project)
-	for FILE in ${FILES}; do \
-		touch "project_files.project/$${FILE}.txt"; \
-	done
 
+	@echo "installing packages..."
+	pip install jupyter && pip install jupyterlab && pip install jupytext
+	pip install --no-cache-dir -r requirements.txt
+	@echo "done"
+	
 # The ${} notation is specific to the make syntax and is very similar to bash's $() 
 # This function uses pytest to test our source files
-test:
+# Run linter first to catch obvious errors
+test: typing
 	${PYTHON} -m pytest
 	
 run:
-	${PYTHON} our_app.py
+	@echo "${PYTHON} our_app.py - command not setup yet"
 
 # In this context, the *.project pattern means "anything that has the .project extension"
+# '-' in `-rm` to ignore errors thrown by command.
+# https://stackoverflow.com/questions/2670130/make-how-to-continue-after-a-command-fails
 clean:
-	rm -r *.project
+	-rm -r .Trash-0
+	-rm -r .mypy_cache
+	-rm -r .pytest_cache
+	-rm -r __pycache__
+
+typing:
+	${PYTHON} -m mypy --ignore-missing-imports sound
