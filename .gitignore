@@ -2,5 +2,7 @@
 *.swp
 *.ipynb
 studylog.md
+*.egg*
+idea.md
 .Trash*
 **/__pycache__/
