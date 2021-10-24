@@ -10,4 +10,11 @@ This is a structures walkthrough of the Python Documentation to understand the f
 
 Although basic, the aim is to capture details that I have missed my previous work.
 
+## Usage
+```
+# docker container
+make container
 
+# local setup
+make setup
+```

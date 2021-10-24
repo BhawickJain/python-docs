@@ -3,7 +3,7 @@
 FROM python:latest
 LABEL maintainer="bhawick@outlook.com"
 
-WORKDIR /usr/src/workspace
+WORKDIR /data
 COPY ./requirements.txt .
 # network analysis workshop
 #COPY ./workspace/setup.py .

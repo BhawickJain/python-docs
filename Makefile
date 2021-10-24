@@ -59,7 +59,12 @@ clean:
 	-rm -r .pytest_cache
 	-rm -r __pycache__
 	# - allows exit 0 regardless of outcome
+	-mv -f nbs/*.md .
 	-mv -f *.ipynb nbs/
+
+compile-nbs:
+	-jupytext --to md nbs/*.ipynb
+	make clean
 
 clean-container:
 	docker compose down -v --rmi all
