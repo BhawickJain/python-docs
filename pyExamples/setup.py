@@ -10,7 +10,7 @@ with open('README.md') as f:
 setup(
     name='pyExamples',
     version='0.1.0',
-    description='Sample package for Python-Guide.org',
+    description='example code snippets to demonstrate software patterns in python',
     long_description=readme,
     author='Bhawick',
     author_email='',
