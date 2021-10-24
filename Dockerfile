@@ -4,7 +4,7 @@ FROM python:latest
 LABEL maintainer="bhawick@outlook.com"
 
 WORKDIR /usr/src/workspace
-COPY ./workspace/requirements.txt .
+COPY ./requirements.txt .
 # network analysis workshop
 #COPY ./workspace/setup.py .
 
@@ -18,4 +18,5 @@ RUN npm install -g npm
 RUN pip install jupyter && pip install jupyterlab && pip install jupytext
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Service available from 8888
 EXPOSE 8888
