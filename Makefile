@@ -18,7 +18,7 @@ help:
 	@echo "make container"
 	@echo "     Setup and Run docker compose container"
 	@echo "make setup"
-	@echo "     Install packages for project"
+	@echo "     Install custom packages in editable mode"
 	@echo "make test"
 	@echo "     Run tests"
 	@echo "make run"
@@ -42,8 +42,7 @@ container-clean:
 # A very important thing to note is that macros (or makefile variables) are referenced in the target's code with a single dollar sign ${}, but all script variables are referenced with two dollar signs $${}
 setup:
 	@echo "installing packages..."
-	pip install jupyter && pip install jupyterlab && pip install jupytext
-	pip install --no-cache-dir -r requirements.txt
+	pip install -e pyExamples
 	@echo "done."
 	
 # The ${} notation is specific to the make syntax and is very similar to bash's $() 
