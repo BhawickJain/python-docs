@@ -6,6 +6,8 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - ./workspace:/usr/src/workspace
+      - .:/usr/src/workspace
     working_dir: /usr/src/workspace/
-    entrypoint: ["jupyter","lab","--ip='*'","--port=8888", "--no-browser", "--allow-root"]
+    # largely unsafe if performed on a remote server
+    # https://stackoverflow.com/questions/41159797/how-to-disable-password-request-for-a-jupyter-notebook-session#47509274
+    entrypoint: ["jupyter","lab","--ip='*'","--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
