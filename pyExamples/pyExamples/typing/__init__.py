@@ -1,4 +1,14 @@
-__all__ = ['ex1_type_hinting', 'ex2_type_annotation']
-__doc__ = "This is a doc for typing"
+__all__ = ['type_hinting', 'type_annotation']
+__doc__ = """
+          Examples of typing facilities available in python. Use the `??` 
+          next to the imported attributes to see the different kinds 
+          of typing facilities available in python.
+          
+          example
+          -------
+          >>> ??type_hinting
+          """
 
-print("This is the typing tutorial")
+# import attributes namespaces typing module is imported
+from . import type_annotation
+from . import type_hinting
