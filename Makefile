@@ -75,4 +75,4 @@ notebooks:
 	make clean
 
 typing:
-	${PYTHON} -m mypy --ignore-missing-imports sound
+	${PYTHON} -m mypy --ignore-missing-imports pyExamples
