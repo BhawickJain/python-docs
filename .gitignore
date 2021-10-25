@@ -1,8 +1,7 @@
 **/.ipynb_checkpoints/
 *.swp
-*.ipynb
 studylog.md
-*.egg*
+*/*.egg*/
 idea.md
 .Trash*
 **/__pycache__/
