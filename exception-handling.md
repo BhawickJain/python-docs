@@ -1,26 +1,28 @@
-
 ## Exception Handling
 
 
-+++
+
 
 #### Types of Errors
 
-```{code-cell} ipython3
+```python
 while True print('Hello')
 ```
 
+<!-- #region -->
 ```python
 File "/tmp/ipykernel_32/979740009.py", line 1
     while True print('Hello')
                ^
 SyntaxError: invalid syntax
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 10 * (1/0)
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 ZeroDivisionError                         Traceback (most recent call last)
@@ -29,11 +31,13 @@ ZeroDivisionError                         Traceback (most recent call last)
 
 ZeroDivisionError: division by zero
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 4 + spam*3
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 NameError                                 Traceback (most recent call last)
@@ -42,11 +46,13 @@ NameError                                 Traceback (most recent call last)
 
 NameError: name 'spam' is not defined
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 '2' + 2
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 TypeError                                 Traceback (most recent call last)
@@ -55,16 +61,14 @@ TypeError                                 Traceback (most recent call last)
 
 TypeError: can only concatenate str (not "int") to str
 ```
-
-+++
+<!-- #endregion -->
 
 There is a list of [Built-in Exceptions](https://docs.python.org/3/library/exceptions.html#bltin-exceptions) available in the python docs [2].
 
-+++
 
 #### Handling Exceptions
 
-```{code-cell} ipython3
+```python
 go = True
 while go:
     try:
@@ -74,17 +78,17 @@ while go:
         print("Oops! Tat was no valid number. Try again...")
 ```
 
+<!-- #region -->
 The code above implies that only `ValueErrors` are handled whilst the rest are allowed to bubble up. Which effectively implies another except statement as follows:
 ```python
 ... except (RuntimeError, TypeError, NameError):
 ...     pass
 ```
-
-+++
+<!-- #endregion -->
 
 You can also create your own exception classes:
 
-```{code-cell} ipython3
+```python
 # Base Class Example 1
 class B(Exception):
     pass
@@ -106,7 +110,7 @@ for cls in [B, C, D]:
         print('B')
 ```
 
-```{code-cell} ipython3
+```python
 # Base Class Example 2
 class B(Exception):
     pass
@@ -136,7 +140,7 @@ In `example 2`, `class C` would go down the first `except B` path as `class B` i
 
 This means you need to be very mindful of the order and base-derived class relationships present in your custom exceptions.
 
-```{code-cell} ipython3
+```python
 import sys
 
 try: 
@@ -159,13 +163,13 @@ Interesting that `FileNotFoundError` must be a derived class of `OSError`.
 `[?]` Is the `FileNotFoundError` a derived class of the more generic `OSError`?  
 `[?]` Is it better to use the more generic `OSError` in the code example below?
 
-+++
-
+<!-- #region -->
 ```python
 OS Error: [Errno 2] No such file or directory: 'myfile.txt'
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 for arg in sys.argv[1:]:
     try:
         f = open(arg, 'r')
@@ -177,12 +181,14 @@ for arg in sys.argv[1:]:
         f.close()
 ```
 
+<!-- #region -->
 ```python
 cannot open -f
 /root/.local/share/jupyter/runtime/kernel-c6d7de2f-4fdb-4a53-a4dc-fc4df05f9646.json has 12 lines
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 try: 
     raise Exception('spam', 'eggs')
 except Exception as inst:
@@ -195,6 +201,7 @@ except Exception as inst:
     print('y =', y)
 ```
 
+<!-- #region -->
 ```python
 <class 'Exception'>
 ('spam', 'eggs')
@@ -202,8 +209,9 @@ except Exception as inst:
 x = spam
 y = eggs
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 def this_fails():
     x = 1/0
 
@@ -211,20 +219,22 @@ try:
     this_fails()
 except ZeroDivisionError as err:
     print('Handling runt-time error;', err)
+
 ```
 
+<!-- #region -->
 ```python
 Handling runt-time error; division by zero
 ```
-
-+++
+<!-- #endregion -->
 
 ### Raising Exceptions
 
-```{code-cell} ipython3
+```python
 raise NameError('HiThere')
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 NameError                                 Traceback (most recent call last)
@@ -233,11 +243,13 @@ NameError                                 Traceback (most recent call last)
 
 NameError: HiThere
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 raise ValueError
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 ValueError                                Traceback (most recent call last)
@@ -246,8 +258,9 @@ ValueError                                Traceback (most recent call last)
 
 ValueError: 
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 try:
     raise NameError('HiThere')
 except NameError:
@@ -255,6 +268,7 @@ except NameError:
     raise  # rethrows the exception into oblivion!
 ```
 
+<!-- #region -->
 ```python
 An exception flew by!
 ---------------------------------------------------------------------------
@@ -268,8 +282,9 @@ NameError                                 Traceback (most recent call last)
 
 NameError: HiThere
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 def func():
     raise IOError
     
@@ -279,6 +294,7 @@ except IOError as exc:
     raise RuntimeError('Faised to open database') from exc
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 OSError                                   Traceback (most recent call last)
@@ -304,12 +320,11 @@ RuntimeError                              Traceback (most recent call last)
 
 RuntimeError: Falsed to open database
 ```
-
-+++
+<!-- #endregion -->
 
 note that the `from exc` is a default feature, that is if an exception is thrown whilst an exception is being handled, the initial exception is preserved:
 
-```{code-cell} ipython3
+```python
 def func():
     raise IOError
     
@@ -319,6 +334,7 @@ except IOError as exc:
     raise RuntimeError('Failed to open database')
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 OSError                                   Traceback (most recent call last)
@@ -344,13 +360,15 @@ RuntimeError                              Traceback (most recent call last)
 
 RuntimeError: Failed to open database
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 try:
 except OSError:
     raise RuntimeError from None # OSError was not preserved
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 RuntimeError                              Traceback (most recent call last)
@@ -360,12 +378,11 @@ RuntimeError                              Traceback (most recent call last)
 ----> 4     raise RuntimeError m
 RuntimeError: 
 ```
-
-+++
+<!-- #endregion -->
 
 ### User-defined Exceptions
 
-```{code-cell} ipython3
+```python
 class Error(Exception):
     """Base class for exceptions in this module."""
     pass
@@ -397,10 +414,11 @@ class TransitionError(Error):
         self.message = message
 ```
 
-```{code-cell} ipython3
+```python
 raise InputError("a", "message")
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 InputError                                Traceback (most recent call last)
@@ -409,11 +427,13 @@ InputError                                Traceback (most recent call last)
 
 InputError: ('a', 'message')
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 raise TransitionError("a", "b", "message")
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 TransitionError                           Traceback (most recent call last)
@@ -422,18 +442,18 @@ TransitionError                           Traceback (most recent call last)
 
 TransitionError: ('a', 'b', 'message')
 ```
-
-+++
+<!-- #endregion -->
 
 ### Defining Clean-up Actions
 
-```{code-cell} ipython3
+```python
 try:
     raise KeyboardInterrupt
 finally:
     print('Goodbye, world!')
 ```
 
+<!-- #region -->
 ```python
 ---------------------------------------------------------------------------
 KeyboardInterrupt                         Traceback (most recent call last)
@@ -445,8 +465,9 @@ KeyboardInterrupt                         Traceback (most recent call last)
 
 KeyboardInterrupt: 
 ```
+<!-- #endregion -->
 
-```{code-cell} ipython3
+```python
 def bool_return():
     try:
         return True
@@ -456,7 +477,7 @@ def bool_return():
 bool_return()
 ```
 
-```{code-cell} ipython3
+```python
 def divide(x, y):
     try:
         result = x/y
@@ -468,21 +489,21 @@ def divide(x, y):
         print('executing finally clause')
 ```
 
-```{code-cell} ipython3
+```python
 divide(2,0)
 ```
 
-```{code-cell} ipython3
+```python
 divide(2,0)
 ```
 
-```{code-cell} ipython3
+```python
 divide('2', '1')
 ```
 
 some objects have predefined clean up actions
 
-```{code-cell} ipython3
+```python
 for line in open('myfile.txt'):
     print(line, end=' ')
     
@@ -491,7 +512,7 @@ for line in open('myfile.txt'):
 
 the following method has a `finally` statement built in such that the open file is always closed when the scope exited.
 
-```{code-cell} ipython3
+```python
 with open("myfile.txt") as f:
     for line in f:
         print(line, end=" ")

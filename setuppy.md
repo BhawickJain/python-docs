@@ -101,11 +101,8 @@ During development use can also use the `-e` flag to install the package you are
 Notice how when installed in development, python will now look at additional folders, including your local package folder when you reference (`from`/`import`) modules.
 
 ```{code-cell} ipython3
----
-jupyter:
-  outputs_hidden: true
-tags: []
----
+:tags: []
+
 import sys
 sys.path
 
@@ -123,6 +120,11 @@ sys.path
 Common features in more advanced setup.py files is extraction of metadata is more user friendly places. For example, the version of a package may be placed in a single filea at the top level, which `setup.py` has to read and extract. Other problems could dependencies and tracing of versions, during package installation. In the `pytorch vision` `setup.py` the version file is written during installation to reflect the package but also indicate CUDA dependencies on the machine environment instelf.
 
 ```{code-cell} ipython3
+---
+jupyter:
+  outputs_hidden: true
+tags: []
+---
 from pyExamples import setuppy
 
 ?? setuppy.ex1_pytorch.clean
