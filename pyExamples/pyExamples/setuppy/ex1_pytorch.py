@@ -25,8 +25,8 @@ from distutils.version import StrictVersion
 import glob
 import shutil
 
-import torch
-from torch.utils.cpp_extension import BuildExtension, CppExtension, CUDAExtension, CUDA_HOME
+# import torch
+# from torch.utils.cpp_extension import BuildExtension, CppExtension, CUDAExtension, CUDA_HOME
 
 
 def read(*names, **kwargs):
