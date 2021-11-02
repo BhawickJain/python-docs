@@ -91,6 +91,34 @@ sys.path
 
 ### The `dir()` Function
 
+The `dir` function provides the list of attributes available. When called without an argument, the function lists all the names available to the interpreter currently in the file.
+
+```python jupyter={"outputs_hidden": true} tags=[]
+dir()
+```
+
+When giving it a module, `dir(<module>)` provides all the names imported via the `<module>`.
+
+```python jupyter={"outputs_hidden": true} tags=[]
+import pyExamples
+dir(pyExamples)
+```
+
+```python jupyter={"outputs_hidden": true} tags=[]
+pyExamples.__version__
+```
+
+Another example of a standard library
+
+```python jupyter={"outputs_hidden": true} tags=[]
+import sys
+dir(sys)
+```
+
+```python
+import datetime
+dir(datetime)
+```
 
 ### Packages
 
@@ -144,3 +172,8 @@ TODO
 
 
 `[ ]` See if you can get the `test_calc.py` module to be able to access the `calc.py` module
+
+
+## References
+
+1. [Modules -- Python Documentation](https://docs.python.org/3/tutorial/modules.html)
